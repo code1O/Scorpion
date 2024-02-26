@@ -1,0 +1,22 @@
+{
+  "name": "scorpion.net",
+  "version": "1.0.0",
+  "description": "![License](https://img.shields.io/badge/License-MIT-blue.svg)\r ![Contributors](https://img.shields.io/github/contributors/code1O/scorpion.svg)\r ![Code Size](https://img.shields.io/github/languages/code-size/code1O/scorpion.svg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code1O/scorpion.git"
+  },
+  "author": "code1O",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/code1O/scorpion/issues"
+  },
+  "homepage": "https://github.com/code1O/scorpion#readme",
+  "dependencies": {
+    "mathjs": "^12.4.0"
+  }
+}

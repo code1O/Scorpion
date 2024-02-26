@@ -1,0 +1,5 @@
+[project]
+name = "scorpion"
+version = "0.0.1"
+description = "scientifical project"
+readme = "README.md"

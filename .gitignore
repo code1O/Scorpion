@@ -1,0 +1,10 @@
+.dist
+/.vscode
+/node_modules
+
+# paths that's for code testing
+output
+target
+cargo.lock
+cargo.toml
+*tests*
