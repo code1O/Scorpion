@@ -32,7 +32,7 @@ Data handling implies a class inside the file (where the functions are found),
 C# and C doesn't support classes.
 that's why data handling isn't available in these languages
 
-> ![NOTE]
+> [!NOTE]
 > This repository is still in building, so please be patient to the releases
 
 ---
