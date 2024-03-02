@@ -2,6 +2,37 @@
 mod index;
 
 #[allow(dead_code)]
+#[allow(unused_variables)]
+#[allow(unused_assignments)]
+
+/**
+# `mathops`
+Essential mathematical operations for calculus in projects or scripts
+
+## Operations
+
+- **`FindFactor`**
+
+  Find the factorization for two numbers,
+  e.g. the factorization for `x^2+7x-12`
+  is equal to `(3)(-3)/(4)(-3)`
+
+- **`Factor`**
+   
+   Return the factorization for any numbers, e.g. `(3)(-3)/(4)(-3)`
+   will return `3` & `4`.
+
+## Some important guide
+
+### Factorization
+
+  The factorization implies `Factor` & `FindFactor`.
+
+  There's many options for return the result of the factorization,
+  If the factorization is binomial use `double_both`,
+  else if the factorization is monomial instead in the top use `double_top`,
+  else if the factorization is binomial instead in the bottom use `double_bottom`.
+*/
 pub mod mathops{
 
     use super::index::mathfuns::{self, fact, sqrt};
@@ -49,6 +80,43 @@ pub mod mathops{
                 two_version(x1_value, y1_value, x2_value, y2_value)
             ]
         }
+        pub fn double_top(&mut self) -> Vec<i32> {
+            let (x_value, y_value, z_value) = (
+                self.tuple_variables[0], self.tuple_variables[1],
+                self.tuple_variables[2]
+            );
+            pub fn some(x_value: i32, y_value: i32) -> i32 {
+                if y_value == -x_value {
+                    x_value
+                }
+                else if y_value == x_value {
+                    y_value
+                }
+                else {
+                    panic!("Values must be acceptable")
+                }
+            }
+            vec![some(x_value, y_value), z_value]
+        }
+        pub fn double_bottom(&mut self) -> Vec<i32> {
+            let (x_value, y_value, z_value) = (
+                self.tuple_variables[0], self.tuple_variables[1],
+                self.tuple_variables[2]
+            );
+            fn some(y_value: i32, z_value: i32) -> i32 {
+                if z_value == -y_value {
+                    y_value
+                }
+                else if z_value == y_value {
+                    z_value
+                }
+                else {
+                    panic!("Values must be acceptable")
+                }
+            }
+            vec![x_value, some(y_value, z_value)]
+        }
+
     }
 
     pub struct FindFactor {
@@ -62,22 +130,22 @@ pub mod mathops{
         }
     
         pub fn double_both(&self, rtype: &str) -> Result<f64, Vec<f64>> {
-            let (mut n, mut x) = (0,0);
+            let (mut n_variable, mut x_variable) = (0,0);
             for i in 0..(((self.x as f64).sqrt()).round() as i32 + 1) {
                 for j in 0..(((self.y as f64).sqrt()).round() as i32 + 2) {
-                    (n, x) = (i, j);
+                    (n_variable, x_variable) = (i, j);
                 }
             }
-            if x > 5 || x == 5 {
-                x = x-2;
+            if x_variable > 5 || x_variable == 5 {
+                x_variable = x_variable-2;
             } else {
-                x = x
+                x_variable = x_variable
             }
-            let mult = x * n;
+            let mult = x_variable * n_variable;
             
             let (rtop, rbott) = (
-                vec![mult / x, mult / n],
-                vec![mult / n-1, -(mult /n-1)],
+                vec![mult / x_variable, mult / n_variable],
+                vec![mult / n_variable-1, -(mult /n_variable-1)],
             );
 
             let mult_bott: i32 = rbott[0] * rbott[1];
@@ -89,11 +157,11 @@ pub mod mathops{
                 },
                 "top" => {
                     let result: Vec<f64> = vec![rtop[0] as f64, rtop[1] as f64];
-                    Ok(result.into_iter().fold(0.0, |acc, x| acc + x))
+                    Ok(result.into_iter().fold(0.0, |acc, x_variable| acc + x_variable))
                 },
                 "bottom" => {
                     let result: Vec<f64> = vec![rbott[0] as f64, rbott[1] as f64];
-                    Ok(result.into_iter().fold(0.0, |acc, x| acc + x))
+                    Ok(result.into_iter().fold(0.0, |acc, x_variable| acc + x_variable))
                 }
                 _ => Err(vec![0.0, 0.0])
             }

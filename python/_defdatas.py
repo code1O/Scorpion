@@ -16,26 +16,28 @@ class matrix:
     for i in range(len(self._matrix)):
       for j in range(len(self._matrix[self.positional])):
         matrix_x = self._matrix[i][j]; matrix_y = y_matrix[i][j]
-        if rtype == 'mult':
-          z_matrix[i][j] = matrix_x * matrix_y
-        elif rtype == 'add':
-          z_matrix[i][j] = matrix_x + matrix_y
-        elif rtype == 'sub':
-          z_matrix[i][j] = matrix_x - matrix_y
-        elif rtype == 'div':
-          z_matrix[i][j] = matrix_x / matrix_y
+        match rtype:
+          case 'mult':
+            z_matrix[i][j] = matrix_x * matrix_y
+          case 'add':
+            z_matrix[i][j] = matrix_x + matrix_y
+          case 'sub':
+            z_matrix[i][j] = matrix_x - matrix_y
+          case 'div':
+            z_matrix[i][j] = matrix_x / matrix_y
     return z_matrix
 
   def get(self, rtype: str) -> tuple:
     ArrayColumn = [x for x in self._matrix[self.positional]]
-    if rtype == "column":
-      return ArrayColumn
-    elif rtype == "row":
-      for value in self._matrix:
-        self.newvalues.append(value[self.positional])
-      return self.newvalues
-    elif rtype == "matrix":
-      return self._matrix
+    match rtype:
+      case "column":
+        return ArrayColumn
+      case "row":
+        for value in self._matrix:
+          self.newvalues.append(value[self.positional])
+        return self.newvalues
+      case "matrix":
+        return self._matrix
 
   def overwrite(self, value: any) -> tuple:
     if len(value) > len(self._matrix[self.positional]):
@@ -135,4 +137,17 @@ class Array:
       n = n * i
       self.tup[self.position].insert(1, n)
     self.tup[self.position].insert(1, newArrayInside)
+    return self.tup
+  
+  def intersect(self, array_b: tuple) -> tuple:
+    intersection = []
+    for items_array_x in self.tup:
+      for items_array_y in array_b:
+        if not items_array_x in intersection and items_array_x == items_array_y:
+          intersection.append(items_array_x)
+    return intersection
+  
+  def union(self, array_b: tuple) -> tuple:
+    for items_array_b in array_b:
+      self.tup.append(items_array_b)
     return self.tup

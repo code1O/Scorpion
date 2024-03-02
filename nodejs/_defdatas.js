@@ -50,6 +50,23 @@ class theArray {
         .splice(1, this.array.length, ...newArrayInside);
         return this.array;
     }
+    bignotation(datatype, value=this.position) {
+        function logarithm_notation(array, value) {
+            let {left, right} = {left: 0, right: array.len()};
+            for (let i=left; i<=right; ++i) {
+                let middle = Math.floor((left+right)/2);
+                if (array[middle] === value) return middle;
+                else if (array[middle] < value) left = middle-1;
+                else if (array[middle] > value) left = middle+1;
+            }
+        }
+        switch (datatype) {
+            case 'O(log)':
+                return logarithm_notation(this.array, value);
+            case 'O(1)':
+                return this.array[value];
+        }
+    }
 }
 
 exports.theArray = theArray;

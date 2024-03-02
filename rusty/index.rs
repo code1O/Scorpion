@@ -1,6 +1,8 @@
 #[allow(dead_code)]
+#[allow(unused_variables)]
 
 pub mod mathfuns{
+
     pub const PI: f64 = 3.14159265;
     pub const E: f64 = 2.7182818284;
 
@@ -23,5 +25,10 @@ pub mod mathfuns{
     pub fn sqrt<T: Into<f64>>(x: T) -> f64 {
         let x: f64 = x.into();
         x.powf(0.5)
+    }
+
+    pub fn sci_not(value: i32) -> String {
+        let len_str_x = value.to_string().len();
+        format!("{}(10)**{}", value, len_str_x)
     }
 }

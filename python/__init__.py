@@ -4,11 +4,11 @@ Scientifical and data handler project
 
 ::
 
-Scientifical operations ------ apple
+Scientifical funcitons ------ apple
 
 ::
 
-Scientifical functions  ------ newton
+Scientifical operations  ------ newton
 
 ::
 
@@ -36,5 +36,6 @@ findfactor
 from ._defdatas import (
 matrix,
 locate_matrix,
-matharray
+matharray,
+Array
 )

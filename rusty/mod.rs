@@ -1,3 +1,3 @@
 pub mod handledatas;
-pub mod functions;
+pub mod newton;
 pub mod index;
