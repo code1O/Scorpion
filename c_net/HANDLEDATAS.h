@@ -20,14 +20,6 @@ class Matrix{
         newMatrix[positional] = value;
         return newMatrix;
     }
-    auto get = [&](const std::string type){
-        switch(type) {
-            case 'Matrix':
-            return matrix_ptr;
-            case 'column':
-            return matrix_ptr[0][positional];
-        }
-    }
 };
 
 template <typename Type>
