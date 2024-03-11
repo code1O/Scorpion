@@ -20,7 +20,7 @@ SupportsIndex,
 Literal,
 TypeAlias
 )
-from math import factorial
+from functools import lru_cache
 import sys
 
 pi: float = 3.141592653589793
@@ -49,6 +49,7 @@ def __degrees(value) -> float: return (value*pi)/180
 def degrees(value: float) -> float:...
 @overload
 def degrees(value: LiteralInteger) -> float:...
+@lru_cache()
 def degrees(value) -> float: return __degrees(value)
 
 def __radians(value) -> float: return (value/180)*pi
@@ -56,6 +57,7 @@ def __radians(value) -> float: return (value/180)*pi
 def radians(value: LiteralInteger) -> float:...
 @overload
 def radians(value: float) -> float:...
+@lru_cache()
 def radians(value) -> float: return __radians(value)
 
 def __sqrt(value) -> float: return pow(value, .5)
@@ -63,16 +65,17 @@ def __sqrt(value) -> float: return pow(value, .5)
 def sqrt(value: LiteralInteger) -> float:...
 @overload
 def sqrt(value: float) -> float:...
+@lru_cache()
 def sqrt(value) -> float: return __sqrt(value)
 
 def __exp(value) -> float: return pow(e, value)
 def exp(value: _TypeNum) -> float: return __exp(value)
 
-def __fact(value) -> float: return float(factorial(value))
 @overload
 def fact(value: LiteralInteger) -> float:...
 @overload
 def fact(value: float) -> float:...
+@lru_cache()
 def fact(value) -> float:
     n = float(1)
     if value == 0 or value == 1: return 1
@@ -86,3 +89,13 @@ def logn(value: LiteralInteger) -> float:...
 @overload
 def logn(value: float) -> float:...
 def logn(value) -> float: return __logn(value)
+
+@lru_cache()
+def floor(x: _TypeNum) -> int:
+    if type(x) == int: return x
+    return int(x)
+
+@lru_cache()
+def absolute(x: _TypeNum):
+    if x > 0: return x
+    elif x < 0: return (x)*(-1)

@@ -112,6 +112,7 @@ class sin:
     mapn = {0:1, 1:0, 2:-1, 3:0}
     DeltaX = self.value-pi/2
     res = sum([mapn[y%4]*pow(DeltaX, y)/fact(y) for y in range(20)])
+    return res
 
 class cos:
   def __init__(self, value: _TypeNum) -> None:
@@ -133,8 +134,63 @@ class tangent:
 
   @property
   def degrees(self) -> float:
-    return sin(self.value).degrees/cos(self.value).degrees
+    return sin(self.value).deg/cos(self.value).deg
 
   @property
   def radians(self) -> float:
-    return sin(self.value).radians/cos(self.value).radians
+    return sin(self.value).deg/cos(self.value).radians
+
+
+class functions:
+  """
+  functions or also called:
+  
+  f(x), g(x), h(x), etc...
+  """
+  def __init__(self, func, x_value) -> None:
+    self.func = func
+    self.function_x, self.x_value = func(x_value), x_value
+  
+  def set_function(self):
+    return self.func
+  
+  def fdeltax(self, deltax: _TypeNum=0.001):
+    result = ((self.func(self.x_value+deltax)-(self.function_x))/deltax)
+    return result
+
+class vectors:
+  import matplotlib.pyplot as plt
+  import numpy as np
+  def __init__(self, Fx: _TypeNum, Fy: _TypeNum) -> None:
+    self.Fx, self.Fy = Fx, Fy
+  
+  def calculate(self, angule:tuple[bool, _TypeNum], R_:tuple[bool, _TypeNum]):
+    result = None
+    if angule[0] == True and R_[0] == True:
+      tanAlpha = self.np.arctan(self.np.degrees(self.Fx/self.Fy))
+      (result:= [angule[1], R_[1], tanAlpha])
+    elif angule[0] == True and (R_[0] == False and R_[1] == 0):
+      R = sqrt((self.Fx**2)+(self.Fy**2))
+      tanAlpha = self.np.arctan(self.np.degrees(self.Fx/self.Fy))
+      (result:= [angule[1], R, tanAlpha])
+    return result
+  
+  def plot(self, *args) -> None:
+    R_Params = args[1]
+    result = self.calculate(angule=args[0], R_=R_Params)
+    Vx, Vy = result[1]*cos(result[0]).radians, result[1]*sin(result[0]).radians
+    def set_info(Vx, Vy):
+      fig, ax = self.plt.subplots(figsize=(8,8))
+      ax.spines['left'].set_position('zero')
+      ax.spines['bottom'].set_position('zero')
+      ax.spines['top'].set_visible(False)
+      ax.plot((1), (0), marker='>', transform=ax.get_yaxis_transform(), color='black')
+      ax.plot((0), (1), marker='^', transform=ax.get_xaxis_transform(), color='black')
+      ax.set_xlim(-5, 5)
+      ax.set_ylim(-5, 5)
+      ax.set_xticks(self.np.arange(-5, 6, 1))
+      ax.set_yticks(self.np.arange(-5, 6, 1))
+      ax.grid(which='both', color='grey', linewidth=1, linestyle='-', alpha=0.2)
+      self.plt.quiver(0, 0, Vx, Vy, angles='xy', scale_units='xy', scale=1, color='r')
+    set_info(Vx, Vy)
+    self.plt.show()

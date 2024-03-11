@@ -20,4 +20,22 @@ class Matrix{
         newMatrix[positional] = value;
         return newMatrix;
     }
+    auto get = [&](const std::string type){
+        switch(type) {
+            case 'Matrix':
+            return matrix_ptr;
+            case 'column':
+            return matrix_ptr[0][positional];
+        }
+    }
+};
+
+template <typename Type>
+
+class Array{
+    public:
+    std::vector<Type> array_ptr;
+    int positional;
+    Array(const std::vector<Type> _array, const int position): array_ptr(_array), positional(position){}
+
 };

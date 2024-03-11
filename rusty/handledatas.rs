@@ -22,6 +22,8 @@ As in python, it could work excellent for data science.
   inside or mathematical calculation.
 */
 pub mod datas{
+    use std::vec;
+
 
     pub struct Matrix {
         _matrix: Vec<Vec<u32>>,
@@ -52,8 +54,6 @@ pub mod datas{
             let new_values = vec![0; self._matrix[0].len()];
             self._matrix.push(new_values);
         }
-
-        pub fn get(&mut self, type_data: &str) {}
 
         /**
         ## `Matrix.iterate`
@@ -138,7 +138,7 @@ pub mod datas{
                 result
             }
             match notation_type {
-                "O(log)" => {
+                "O(log n)" => {
                     lognotation(vector, self.position as u32)
                 },
                 "O(1)" => {

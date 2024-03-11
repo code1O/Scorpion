@@ -23,7 +23,9 @@ e,
 degrees,
 radians,
 fact,
-logn
+logn,
+floor,
+absolute
 )
 from .newton import (
 sin,
@@ -31,7 +33,9 @@ cos,
 tangent,
 quadratic_gen,
 factor,
-findfactor
+findfactor,
+functions,
+vectors
 )
 from ._defdatas import (
 matrix,

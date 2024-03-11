@@ -253,4 +253,18 @@ pub mod mathops{
             result
         }
     }
+
+    pub struct CalculateVec {
+        fx: Result<i32, f64>,
+        fy: Result<i32, f64>
+    }
+    impl CalculateVec {
+        pub fn new(fx: Result<i32, f64>, fy: Result<i32, f64>) -> Self {
+            CalculateVec {
+                fx: fx,
+                fy: fy
+            }
+        }
+        
+    }
 }
