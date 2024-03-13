@@ -96,7 +96,7 @@ class matharray:
       return result
   
   def divide(self, number: _TypeNum) -> _TypeNum:
-    result = [x / number for x in self.values]
+    result = [x/number for x in self.values]
     if number < 0:
       raise ValueError('Number must be positive, not negative')
     else:
@@ -133,7 +133,7 @@ class matharray:
 
 
 class Array:
-  from itertools import combinations
+  
   empty_arr = []
   
   def __init__(self, array, position: int|None = None):

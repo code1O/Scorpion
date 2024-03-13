@@ -35,7 +35,9 @@ quadratic_gen,
 factor,
 findfactor,
 functions,
-vectors
+vectors,
+integral_undefined,
+integral_defined
 )
 from ._defdatas import (
 matrix,

@@ -1,8 +1,6 @@
 .dist
 /.vscode
 /node_modules
-*.un~
-*.py~
 
 # paths that's for code testing
 output

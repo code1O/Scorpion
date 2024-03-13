@@ -134,7 +134,7 @@ class tangent:
 
   @property
   def degrees(self) -> float:
-    return sin(self.value).deg/cos(self.value).deg
+    return sin(self.value).deg/cos(self.ivalue).deg
 
   @property
   def radians(self) -> float:
@@ -194,3 +194,37 @@ class vectors:
       self.plt.quiver(0, 0, Vx, Vy, angles='xy', scale_units='xy', scale=1, color='r')
     set_info(Vx, Vy)
     self.plt.show()
+
+class integral_undefined:
+  from ._defdatas import Array
+  def __init__(self, operation) -> None:
+    self.operation = operation
+
+  def sum_pownums(self, x: str) -> str:
+      list_: tuple = []
+      nums: tuple[str] = x.replace(" ", "").split(";")
+      array_values = nums[0:self.Array(nums, 1).bignotation("O(log n)", "")]
+      for x in array_values:
+          y: int = int(x[2])+1
+          list_.append(f"{x[0]}^{y}/{y}")
+      return list_
+
+  def calculate(self, *args, func_result=lambda x,y: x*y):
+    arg1 = self.sum_pownums(args[0])
+    return [func_result(self.operation, float(y[2])) for y in arg1]
+
+class integral_defined(integral_undefined):
+    def __init__(self, operation, range_:tuple[int, int]) -> None:
+        self.ranges, self.operation = range_, operation
+
+    def sum_pownums(self, x: str) -> str:
+        list_: tuple = []
+        nums: tuple[str] = x.replace(" ", "").split(";")
+        for x in nums:
+            y: int = int(x[2])+self.ranges[0]
+            list_.append(y)
+        return list_
+
+    def calculate(self, *args):
+        dx, arg1 = (self.ranges[0]/self.ranges[1]), self.sum_pownums(args[0])
+        return [dx*y for y in arg1]

@@ -1,9 +1,14 @@
 #[path="index.rs"]
 mod index;
 
+#[path="handledatas.rs"]
+mod datas;
+
 #[allow(dead_code)]
 #[allow(unused_variables)]
+#[allow(unused_imports)]
 #[allow(unused_assignments)]
+#[allow(unused_mut)]
 
 /**
 # `mathops`
@@ -35,6 +40,7 @@ Essential mathematical operations for calculus in projects or scripts
 */
 pub mod mathops{
 
+    use super::datas::datas::{self, Array};
     use super::index::mathfuns::{self, fact, sqrt};
     
     pub struct Factor {
@@ -266,5 +272,21 @@ pub mod mathops{
             }
         }
         
+    }
+    pub struct IntegralUndefined {
+        operation: Result<f64, i32>
+    }
+    impl IntegralUndefined {
+        pub fn new(operation: Result<f64, i32>) -> Self {
+            IntegralUndefined{
+                operation: operation
+            }
+        }
+        pub fn sum_pownums(&mut self, nums: &str) {
+            let mut list = [0];
+            let mut stringer = String::from(nums);
+            stringer = stringer.replace(" ", "");
+            let parts: Vec<&str> = stringer.split(";").collect();
+        }
     }
 }
