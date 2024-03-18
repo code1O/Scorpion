@@ -12,6 +12,17 @@ class matrix:
       _values[i] = [0]*columns
     return _values
   
+  def create_multiple(rows: int, columns: int, names: str) -> tuple:
+    _values, n = [0]*rows, 0
+    list_ = []
+    def make_matrix():
+      for i in range(columns):
+        _values[i] = [0]*columns
+      return _values
+    names: tuple = names.replace(' ', '').split(';')
+    result = [make_matrix() for i in range(len(names))]
+    return result
+  
   def iterate(self, y_matrix: tuple, z_matrix: tuple|None = None, rtype: str = 'add') -> tuple:
     for i in range(len(self._matrix)):
       for j in range(len(self._matrix[self.positional])):
@@ -113,8 +124,8 @@ class matharray:
     """
     Sum values by itself
     ## Example
-    >>> matharray([1, 2, 3, 4, 5]).selfsum()
-    >>> 15 # (1 + 2) + (3 + 4) + 5
+    >>> matharray([1, 2, 3, 4, 5]).maxSum()
+    >>> 9 # (1 + 2) -> (2 + 3) -> (3 + 4) -> (4 + 5)
     """
     lenght, maxSum = len(self.values)-1, float("-Infinity")
     for i in range(0, lenght):
