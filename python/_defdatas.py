@@ -73,7 +73,7 @@ class matrix:
       return [x for x,y in self.new_values]
     elif not variable=="x" and not variable=="y":
       return f"variable \"{variable}\" not allowed", None
-    return [y for x,y in new_values]
+    return [y for x,y in self.new_values]
 
 class locate_matrix:
   import json
