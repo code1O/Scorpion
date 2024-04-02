@@ -67,15 +67,15 @@ class matrix:
     len_matrix = len(self.matrix[self.positional])
     for pack in range(1, len_matrix):
       n+=1
-      arg = self.matrix[self.positional:2]
+      arg = self.matrix[n-1][:2]
       self.new_values.append(arg)
     for var_x,var_y in self.new_values:
       if variable == "x":
         (result:= var_x)
-      elif not variable == "x" or not variable == "y":
+      elif not variable == "x" and not variable == "y":
         return f"variable \"{variable}\" not allowed!", None
       (result:= var_y)
-    return result
+    return new_values
 
 class locate_matrix:
   import json
