@@ -61,6 +61,21 @@ class matrix:
   def create_column(self) -> tuple:
     self._matrix.append([0]*len(self._matrix))
     return self._matrix
+  
+  def pair(self, variable: str="x"):
+    n,result = 0, None
+    len_matrix = len(self.matrix[self.positional])
+    for pack in range(1, len_matrix):
+      n+=1
+      arg = self.matrix[self.positional:2]
+      self.new_values.append(arg)
+    for var_x,var_y in self.new_values:
+      if variable == "x":
+        (result:= var_x)
+      elif not variable == "x" or not variable == "y":
+        return f"variable \"{variable}\" not allowed!", None
+      (result:= var_y)
+    return result
 
 class locate_matrix:
   import json
