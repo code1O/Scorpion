@@ -206,7 +206,7 @@ class integral_undefined:
       array_values = nums[0:self.Array(nums, 1).bignotation("O(log n)", "")]
       for x in array_values:
           y: int = int(x[2])+1
-          list_.append(f"{x[0]}^{y}/{y}")
+          list_.append((int(x[0])**y)/y)
       return list_
 
   def calculate(self, *args, func_result=lambda x,y: x*y):
@@ -220,8 +220,10 @@ class integral_defined(integral_undefined):
     def sum_pownums(self, x: str) -> str:
         list_: tuple = []
         nums: tuple[str] = x.replace(" ", "").split(";")
-        for x in nums:
-            y: int = int(x[2])+self.ranges[0]
+        for params in nums:
+            if not params in ["x", "y"]:
+                y = (float(params[0])**float(params[2]))+self.ranges[0]
+            y = float(params[2])+self.ranges[0]
             list_.append(y)
         return list_
 
