@@ -226,7 +226,8 @@ class integral_defined(integral_undefined):
             .bignotation("O(log n)", "^")
             if not params in ["x", "y"]:
                 y = (float(params[0])**float(params[_powchar_pos+1:]))+self.ranges[0]
-            y = float(params[_powchar_pos+1:])+self.ranges[0]
+            else:
+                y = float(params[_powchar_pos+1:])+self.ranges[0]
             list_.append(y)
         return list_
 
