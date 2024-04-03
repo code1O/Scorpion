@@ -214,6 +214,7 @@ class integral_undefined:
     return [func_result(self.operation, float(y[2])) for y in arg1]
 
 class integral_defined(integral_undefined):
+    from ._defdatas import Array
     def __init__(self, operation, range_:tuple[int, int]) -> None:
         self.ranges, self.operation = range_, operation
 
@@ -221,9 +222,11 @@ class integral_defined(integral_undefined):
         list_: tuple = []
         nums: tuple[str] = x.replace(" ", "").split(";")
         for params in nums:
+            _powchar_pos = self.Array(nums, 1)\
+            .bignotation("O(log n)", "^")
             if not params in ["x", "y"]:
-                y = (float(params[0])**float(params[2]))+self.ranges[0]
-            y = float(params[2])+self.ranges[0]
+                y = (float(params[0])**float(params[_powchar_pos+1:]))+self.ranges[0]
+            y = float(params[_powchar_pos+1:])+self.ranges[0]
             list_.append(y)
         return list_
 
