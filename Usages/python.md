@@ -20,6 +20,16 @@ matrix_instance.overwrite([6,1,8,6])
 new_matresses = scorpion.matrix.create_multiple(4,4,"x; y; z")
 matrix_instance_y = scorpion.matrix(new_matresses, 1)
 print(matrix_instance.get("matrix"), matrix_instance_y.get("matrix"))
+
+# pairing matrix
+# Conjunt notation in mathematics
+# (a,b),(b,c),(c,d)
+
+print(matrix_instance.pair("x"))
+# Should produce: [2,3,4]
+
+print(matrix_instance.pair("y"))
+# Should produce: [4,6,8]
 ````
 
 # Arrays
