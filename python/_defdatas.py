@@ -70,10 +70,10 @@ class matrix:
       arg = self.matrix[n-1][:2]
       self.new_values.append(arg)
     if variable=="x":
-      return [x for x,y in self.new_values]
+      return [x for x,_ in self.new_values]
     elif not variable=="x" and not variable=="y":
       return f"variable \"{variable}\" not allowed", None
-    return [y for x,y in self.new_values]
+    return [y for _,y in self.new_values]
 
 class locate_matrix:
   import json
