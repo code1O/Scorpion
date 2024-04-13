@@ -234,3 +234,35 @@ class integral_defined(integral_undefined):
     def calculate(self, *args):
         dx, arg1 = (self.ranges[0]/self.ranges[1]), self.sum_pownums(args[0])
         return [dx*y for y in arg1]
+
+class preciss:
+    import matplotlib.pyplot as plt
+    def __init__(self, guest: _TypeNum, host: _TypeNum, keywords: dict|None = None) -> None:
+        self.keywords = keywords
+        self._guest, self._host = guest, host
+        similar_percent = abs(guest-host)
+        error_percent = (similar_percent/host)/10
+        self.percents = (similar_percent, error_percent)
+    
+    def plot(self, title: str, **kwargs) -> None:
+        list_ = {
+            "path_file": str,
+            "name_file": str
+        }
+        list_.update(kwargs)
+        categories = ["Similar", "Error"]
+        self.plt.figure(figsize=(8,5))
+        self.plt.bar(categories, self.percents, color=["blue", "red"])
+        self.plt.title(title)
+        self.plt.ylabel("percent %")
+        self.plt.ylim(0,10)
+        for x,y in enumerate(self.percents):
+            self.plt.text(x, y+0.2, f"{y}%", ha="center", va="bottom")
+        self.plt.show()
+        self.plt.savefig(f"{list_['path_file']}/{list_['name_file']}.png")
+    
+    def __str__(self) -> str:
+        str1 = f"{self.keywords['guest_name']}: {self._guest}\n"
+        str2 = f"Similarity to {self.keywords['host_name']}: {str(self.percents[0])[:4]}%\n"
+        str3 = f"Error percent: {str(self.percents[1])[:4]}%"
+        return str1+str2+str3
