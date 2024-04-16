@@ -9,10 +9,22 @@
     * degrees
     * radians
     * natural logarithm `logn`
+
+Components
+    
+    * Delta
+    * Standart Delta `DeltaX`
+    * pi number `pi`
+    * euler's number `e`
 """
 
 from typing import (
 SupportsFloat,
+Union,
+Dict,
+Tuple,
+List,
+Set
 overload
 )
 from typing_extensions import (
@@ -26,10 +38,21 @@ import sys
 pi: float = 3.141592653589793
 e: float = 2.7182818284590452
 
+# `Delta` is dynamic, `DeltaX` is constant
+# in other words, `DeltaX` it's the standart value
+# meanwhile `Delta` is for any Real value
+
+Delta: float = lambda x,y: 0 if not y > 1 else (x*10**(-y))
+DeltaX: float = (1*10**(-3))
+
+
 if sys.version_info >= (3, 8):
     _TypeNum: TypeAlias = SupportsFloat | SupportsIndex
 else:
     _TypeNum: TypeAlias = SupportsFloat
+
+_Typedata: TypeAlias = Union[List[_TypeNum], Set[_TypeNum],
+Tuple[_TypeNum], Dict[str, _TypeNum]]
 
 PositiveInt = Literal[
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
