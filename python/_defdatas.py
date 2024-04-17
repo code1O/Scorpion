@@ -1,10 +1,11 @@
 from .apple import (
 _TypeNum, _Typedata, PositiveInt as Natural,
+_TdataNum
 )
 
 class matrix:
   newvalues = []
-  def __init__(self, _matrix: _Typedata, positional: PositiveInt=0) -> None:
+  def __init__(self, _matrix: _Typedata, positional: Natural=0) -> None:
     self._matrix = _matrix
     self.positional = positional -1
     
@@ -60,7 +61,7 @@ class matrix:
       case "matrix":
         return self._matrix
   
-  def overwrite(self, value: any) -> tuple:
+  def overwrite(self, value: _TdataNum) -> tuple:
     if len(value) > len(self._matrix[self.positional]):
       value = value[:len(self._matrix[self.positional])]
     self._matrix[self.positional] = value
