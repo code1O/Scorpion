@@ -81,6 +81,7 @@ class matrix:
   def pair(self, variable: str="x"):
     """
     pair the matrix from [[4,5,5,7,8],[3,6,6,8,9],[2,5,6,8,9]] to (4,3,2),(5,6,5)
+    """
     n,result = 0, None
     len_matrix = len(self.matrix[self.positional])
     for _ in range(1, len_matrix):
