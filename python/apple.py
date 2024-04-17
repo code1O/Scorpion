@@ -67,6 +67,8 @@ NegativeInt = Literal [
 
 LiteralInteger: TypeAlias = PositiveInt | NegativeInt | Literal[0]
 
+_TdataNum: TypeAlias = _Typedata | _TypeNum
+
 def __degrees(value) -> float: return (value*pi)/180
 @overload
 def degrees(value: float) -> float:...
