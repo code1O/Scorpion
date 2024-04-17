@@ -70,7 +70,7 @@ class vectors{
         if (angle[0] === true && R_[0] === True) {
             result = [angle[1], R_[1], tanAlpha]
         }
-        else if (angle[0] === True && R[0] === 0){
+        else if (angle[0] === True && R_[0] === 0){
             const R = Math.sqrt(this.Fx**2+this.Fy**2)
             result = [angle[1], R, tanAlpha]
         }
