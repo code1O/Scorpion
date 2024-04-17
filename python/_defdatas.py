@@ -55,8 +55,7 @@ class matrix:
             return self.position
     ```
     rtype: determinize the data to consider return
-
-(column values, rows from a position)
+   (column values, rows from a position)
     """
     ArrayColumn = [x for x in self._matrix[self.positional]]
     match rtype:
