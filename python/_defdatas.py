@@ -1,8 +1,10 @@
-from .apple import _TypeNum
+from .apple import (
+_TypeNum, _Typedata, PositiveInt as Natural,
+)
 
 class matrix:
   newvalues = []
-  def __init__(self, _matrix: tuple, positional: int=0) -> None:
+  def __init__(self, _matrix: _Typedata, positional: PositiveInt=0) -> None:
     self._matrix = _matrix
     self.positional = positional -1
     
@@ -12,7 +14,7 @@ class matrix:
       _values[i] = [0]*columns
     return _values
   
-  def create_multiple(rows: int, columns: int, variables: str) -> tuple:
+  def create_multiple(rows: Natural, columns: Natural, variables: str) -> tuple:
     """
     variables: \"x;y;z\" create three matresses
     rows & columns define the same size for all of the matresses, for example: 4x4, 3x3 or 4x1 (starting from the length of the rows)
@@ -24,24 +26,14 @@ class matrix:
         _values[i] = [0]*columns
       return _values
     variables: tuple = variables.replace(' ', '').split(';')
-    result = [make_matrix() for i in range(len(variables))]
+    result = [make_matrix() for _ in range(len(variables))]
     return result
   
-  def iterate(self, y_matrix: tuple, z_matrix: tuple|None = None, rtype: str = 'add') -> tuple:
+  def iterate(self, y_matrix: _Typedata, z_matrix: _Typedata|None = None, lambda_func=lambda x,y: x*y) -> _Typedata:
     for i in range(len(self._matrix)):
       for j in range(len(self._matrix[self.positional])):
         matrix_x = self._matrix[i][j]; matrix_y = y_matrix[i][j]
-        match rtype:
-          case 'mult':
-            z_matrix[i][j] = matrix_x * matrix_y
-          case 'add':
-            z_matrix[i][j] = matrix_x + matrix_y
-          case 'sub':
-            z_matrix[i][j] = matrix_x - matrix_y
-          case 'div':
-            z_matrix[i][j] = matrix_x / matrix_y
-          case 'pow':
-            z_matrix[i][j] = matrix_x ** matrix_y
+        z_matrix[i][j] = lambda_func(matrix_x, matrix_y)
     return z_matrix
   
   def get(self, rtype: str) -> tuple:
@@ -128,7 +120,7 @@ class locate_matrix:
       return file_dottxt
 
 class matharray:
-  def __init__(self, values: tuple[_TypeNum]) -> None:
+  def __init__(self, values: _Typedata) -> None:
     self.values = values
   
   def sum(self, number: _TypeNum) -> _TypeNum:
@@ -186,8 +178,8 @@ class Array:
   
   empty_arr = []
   
-  def __init__(self, array, position: int|None = None):
-    self.tup = array; self.position = position -1
+  def __init__(self, data: _Typedata, position: PositiveInt|None = None):
+    self.data = data; self.position = position -1
     
   def createArrayInside(self) -> tuple[tuple]:
     n = 0
@@ -200,7 +192,7 @@ class Array:
     self.tup[self.position].insert(1, newArrayInside)
     return self.tup
   
-  def intersect(self, array_b: tuple) -> tuple:
+  def intersect(self, array_b: _Typedata) -> _Typedata:
     intersection = []
     for items_array_x in self.tup:
       for items_array_y in array_b:
@@ -208,7 +200,7 @@ class Array:
           intersection.append(items_array_x)
     return intersection
   
-  def union(self, array_b: tuple) -> tuple:
+  def union(self, array_b: _Typedata) -> _Typedata:
     for items_array_b in array_b:
       self.tup.append(items_array_b)
     return self.tup
@@ -232,18 +224,18 @@ class Array:
         result = result-1
       return result
     
-    def quadratic_notation(vector: tuple):
-      return [element for element in vector for _ in range(2)]
+    def quadratic_notation(data: _Typedata):
+      return [element for element in data for _ in range(2)]
     
     match notation_type:
       case 'O(log n)':
         return log_notation(self.tup, value)
       case 'O(1)':
-        return self.tup[self.position]
+        return self.data[self.position]
       case 'O(n^2)':
         return quadratic_notation(self.tup)
   
-  def Reverse(self) -> tuple:
+  def Reverse(self) -> _Typedata:
     n,length = 0, len(self.tup)
     for range_search in range(length):
       n = n + 1
