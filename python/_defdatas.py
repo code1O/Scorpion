@@ -54,7 +54,9 @@ class matrix:
         def get(self):
             return self.position
     ```
-    rtype: determinize the data to consider return (column values, all the rows from a certain position)
+    rtype: determinize the data to consider return
+
+(column values, rows from a position)
     """
     ArrayColumn = [x for x in self._matrix[self.positional]]
     match rtype:
