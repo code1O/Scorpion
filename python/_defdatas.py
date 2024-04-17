@@ -80,7 +80,9 @@ class matrix:
   
   def pair(self, variable: str="x"):
     """
-    pair the matrix from [[4,5,5,7,8],[3,6,6,8,9],[2,5,6,8,9]] to (4,3,2),(5,6,5)
+    pair the matrix from [
+    [4,5,5,7,8],[3,6,6,8,9],[2,5,6,8,9]
+    ] to (4,3,2),(5,6,5)
     """
     n,result = 0, None
     len_matrix = len(self.matrix[self.positional])
@@ -92,7 +94,8 @@ class matrix:
     y_pair = [y for _,y in self.newvalues]
     if variable=="x":
       return x_pair
-    elif not variable=="x" and not variable=="y":
+    elif not variable=="x" and (
+    not variable=="y" or not variable == "xy"):
       return f"variable \"{variable}\" not allowed", None
     elif variable == "xy":
         return x_pair, y_pair
