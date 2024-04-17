@@ -59,6 +59,31 @@ class tangent{
     }
 }
 
+class vectors{
+    constructor(Fx, Fy){
+        this.Fx = Fx
+        this.Fy = Fy
+    }
+    calculate(angle, R_) {
+        let result = null
+        const tanAlpha = Math.atan(apple.degrees(this.Fx/this.Fy))
+        if (angle[0] === true && R_[0] === True) {
+            result = [angle[1], R_[1], tanAlpha]
+        }
+        else if (angle[0] === True && R[0] === 0){
+            const R = Math.sqrt(this.Fx**2+this.Fy**2)
+            result = [angle[1], R, tanAlpha]
+        }
+        return result 
+    }
+    ready_plot(angle, R_) {
+        const calculate = this.calculate(angle, R_)
+        const Vx = calculate[1]*(new cosin(calculate[0]).radians())
+        const Vy = calculate[1]*(new sin(calculate[0]).radians())
+        return [Vx, Vy]
+    }
+}
+
 exports.sin = sin
 exports.cosin = cosin
 exports.tangent = tangent
