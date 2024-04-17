@@ -12,15 +12,19 @@ class matrix:
       _values[i] = [0]*columns
     return _values
   
-  def create_multiple(rows: int, columns: int, names: str) -> tuple:
+  def create_multiple(rows: int, columns: int, variables: str) -> tuple:
+    """
+    variables: \"x;y;z\" create three matresses
+    rows & columns define the same size for all of the matresses, for example: 4x4, 3x3 or 4x1 (starting from the length of the rows)
+    """
     _values, n = [0]*rows, 0
     list_ = []
     def make_matrix():
       for i in range(columns):
         _values[i] = [0]*columns
       return _values
-    names: tuple = names.replace(' ', '').split(';')
-    result = [make_matrix() for i in range(len(names))]
+    variables: tuple = variables.replace(' ', '').split(';')
+    result = [make_matrix() for i in range(len(variables))]
     return result
   
   def iterate(self, y_matrix: tuple, z_matrix: tuple|None = None, rtype: str = 'add') -> tuple:
@@ -41,6 +45,17 @@ class matrix:
     return z_matrix
   
   def get(self, rtype: str) -> tuple:
+    """
+    ## Example with a vector parameter function:
+    ```python
+    class vector_handler:
+        def __init__(self, param, position)->None:
+            self.position = param[position-1]
+        def get(self):
+            return self.position
+    ```
+    rtype: determinize the data to consider return (column values, all the rows from a certain position)
+    """
     ArrayColumn = [x for x in self._matrix[self.positional]]
     match rtype:
       case "column":
@@ -63,17 +78,23 @@ class matrix:
     return self._matrix
   
   def pair(self, variable: str="x"):
+    """
+    pair the matrix from [[4,5,5,7,8],[3,6,6,8,9],[2,5,6,8,9]] to (4,3,2),(5,6,5)
     n,result = 0, None
     len_matrix = len(self.matrix[self.positional])
-    for pack in range(1, len_matrix):
+    for _ in range(1, len_matrix):
       n+=1
       arg = self.matrix[n-1][:2]
-      self.new_values.append(arg)
+      self.newvalues.append(arg)
+    x_pair = [x for x,_ in self.newvalues]
+    y_pair = [y for _,y in self.newvalues]
     if variable=="x":
-      return [x for x,_ in self.new_values]
+      return x_pair
     elif not variable=="x" and not variable=="y":
       return f"variable \"{variable}\" not allowed", None
-    return [y for _,y in self.new_values]
+    elif variable == "xy":
+        return x_pair, y_pair
+    return y_pair
 
 class locate_matrix:
   import json
