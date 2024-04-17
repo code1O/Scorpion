@@ -87,3 +87,4 @@ class vectors{
 exports.sin = sin
 exports.cosin = cosin
 exports.tangent = tangent
+exports.vectors = vectors
