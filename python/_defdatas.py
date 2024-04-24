@@ -179,7 +179,7 @@ class Array:
   
   empty_arr = []
   
-  def __init__(self, data: _Typedata, position: PositiveInt|None = None):
+  def __init__(self, data: _Typedata, position: Natural|None = None):
     self.data = data; self.position = position -1
     
   def createArrayInside(self) -> tuple[tuple]:
