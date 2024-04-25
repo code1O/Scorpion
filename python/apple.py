@@ -86,9 +86,11 @@ def radians(value: float) -> float:...
 def radians(value) -> float: return __radians(value)
 
 def __sqrt(value) -> float:
-  if value == -value:
-    value = (value+0j)
-  return pow(value, .5)
+  res = 0
+  if value < 0:
+      res = (abs(value)+0j)**(1/2)
+      return res
+  return value**(1/2)
 @overload
 def sqrt(value: LiteralInteger) -> float:...
 @overload
