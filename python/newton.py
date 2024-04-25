@@ -16,22 +16,22 @@ class factor:
   def __init__(self, values: tuple[_TypeNum]) -> None:
     def __top():
       x = values[0]
-      if values[0] == -x and values[1] == x:
-        return values[0]
-      elif values[0] == x and values[1] == -x:
+      if x < 0 and (values[1]^x == -2):
+        return x
+      elif x > 0 and (values[1]^x == 0):
         return values[1]
-      elif values[0] == x and values[1] == x:
+      elif x > 0 and (values[1]&(0^-x) == 1):
         return values[1]
       else:
         return values[1]
 
     def __bottom():
       x = values[2]; y = values[3]
-      if x == -values[0] and y == values[1]:
+      if (x^values[0] == -2) and (y^values[1] == 0):
         return x
-      elif x == values[0] and y == -values[1]:
+      elif (x^values[0] == 0) and (y^values[1] == -2):
         return y
-      elif x == values[0] and y == values[1]:
+      elif (x^values[0] == 0) and (y&(0^-values[1]) == 1):
         return y
       else:
         return y
