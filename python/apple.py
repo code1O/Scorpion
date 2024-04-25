@@ -85,7 +85,10 @@ def radians(value: float) -> float:...
 @lru_cache()
 def radians(value) -> float: return __radians(value)
 
-def __sqrt(value) -> float: return pow(value, .5)
+def __sqrt(value) -> float:
+  if value == -value:
+    value = (value+0j)
+  return pow(value, .5)
 @overload
 def sqrt(value: LiteralInteger) -> float:...
 @overload
