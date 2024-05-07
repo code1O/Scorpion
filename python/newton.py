@@ -12,6 +12,19 @@ def quadratic_gen(a, b, c):
   result_2 = -b-(sqrt(pow(b, 2)-4*a*c))/2*a
   return [result_1, result_2]
 
+def gamma(x: _TypeNum, y: _TypeNum=0, recursive: bool=False):
+  n = x-2 if x >= 3 else 1
+  recursive_ = lambda x,y: (x/y)*n/y if not y == 0 else x*fact(x-1)
+  not_recursive = lambda x,y: n/y*int(sqrt(pi)) if not y == 0 else fact(x-1)
+  return not_recursive(x,y) if recursive == False else recursive_(x,y)
+
+def psi(x: _TypeNum, y:_TypeNum=0, recursion: bool=False)->_TypeNum:
+  h, value_gamma = (1/10**2), 0.57721
+  dgamma_dx = ((gamma(x, y,recursion)+h)-gamma(x,y,recursion))/h
+  calc_gamma = dgamma_dx/gamma(x,y,recursion)
+  calculus = (-value_gamma-2*logn(calc_gamma))+2
+  return calculus
+
 class factor:
   def __init__(self, values: tuple[_TypeNum]) -> None:
     def __top():
