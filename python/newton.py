@@ -4,8 +4,11 @@ sqrt,
 pi,
 degrees,
 fact,
+logn,
 exp
 )
+
+from math import log
 
 def quadratic_gen(a, b, c):
   result_1 = -b+(sqrt(pow(b, 2)-4*a*c))/2*a
