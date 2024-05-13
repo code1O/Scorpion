@@ -1,5 +1,7 @@
 from .apple import(
 _TypeNum,
+_TypeData,
+LiteralInteger as N,
 sqrt,
 pi,
 degrees,
@@ -174,6 +176,32 @@ class functions:
     result = ((self.func(self.x_value+deltax)-(self.function_x))/deltax)
     return result
 
+def derivative(beggin=1,*,x, power):
+  """
+  ```python
+  from scorpion.python import derivative 
+  
+  # derivative of 5x^2
+  dx = derivative(5,x=1,power=2)
+  print(dx) # 10
+  ```
+  """
+  
+  calculus = beggin*((power*x)**(power-1))
+  return calculus
+
+class integral:
+  
+  def __init__(self)->None:...
+  
+  def defined(self, a: N=0,*,b: N, x_pow: N):
+    dx = ((b**n_pow)/x_pow+1)-((a**x_pow+1)/n_pow+1)
+    return dx
+  
+  def undefined(x_n: N=1,*,x_pow: N):
+    return (x_n**(x_pow+1))/(x_pow+1)
+  
+
 class vectors:
   import matplotlib.pyplot as plt
   import numpy as np
@@ -211,45 +239,6 @@ class vectors:
     set_info(Vx, Vy)
     self.plt.show()
 
-class integral_undefined:
-  from ._defdatas import Array
-  def __init__(self, operation) -> None:
-    self.operation = operation
-
-  def sum_pownums(self, x: str) -> str:
-      list_: tuple = []
-      nums: tuple[str] = x.replace(" ", "").split(";")
-      array_values = nums[0:self.Array(nums, 1).bignotation("O(log n)", "")]
-      for x in array_values:
-          y: int = int(x[2])+1
-          list_.append((int(x[0])**y)/y)
-      return list_
-
-  def calculate(self, *args, func_result=lambda x,y: x*y):
-    arg1 = self.sum_pownums(args[0])
-    return [func_result(self.operation, float(y[2])) for y in arg1]
-
-class integral_defined(integral_undefined):
-    from ._defdatas import Array
-    def __init__(self, operation, range_:tuple[int, int]) -> None:
-        self.ranges, self.operation = range_, operation
-
-    def sum_pownums(self, x: str) -> str:
-        list_: tuple = []
-        nums: tuple[str] = x.replace(" ", "").split(";")
-        for params in nums:
-            _powchar_pos = self.Array(nums, 1)\
-            .bignotation("O(log n)", "^")
-            if not params in ["x", "y"]:
-                y = float(params[0])**(float(params[_powchar_pos+1:])+self.ranges[0])
-            else:
-                y = float(params[_powchar_pos+1:])+self.ranges[0]
-            list_.append(y)
-        return list_
-
-    def calculate(self, *args):
-        dx, arg1 = (self.ranges[0]/self.ranges[1]), self.sum_pownums(args[0])
-        return [dx*y for y in arg1]
 
 class preciss:
     import matplotlib.pyplot as plt
