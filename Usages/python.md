@@ -53,3 +53,18 @@ union, intersect = instance_array.union(array_y), \
                   instance_array.intersect(array_y)
 print(instance_array, position value, [union, intersect])
 ````
+
+# Calculating equations
+$$\big(\frac{\partial}{\partial x}[2x^2]\big)\frac{\Psi(x)\Gamma(x+1)}{\Gamma'(x+1)}\Psi(\frac{x}{y}+1)$$
+
+```python
+from python import (derivative, gamma, psi)
+n,m = 5, 2
+d_gamma = 1
+dx = derivative(2,x=n,power=2)
+gamma_recursive = gamma(n, recursive=True)
+psi_recursive = psi(n,m,recursion=True)
+psi_normal = psi(n)
+calculus = dx*((psi_normal*gamma_recursive)/d_gamma)
+print(calculus*psi_recursive)
+```
