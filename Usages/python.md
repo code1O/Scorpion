@@ -55,7 +55,7 @@ print(instance_array, position value, [union, intersect])
 ````
 
 # Calculating equations
-$$\big(\frac{\partial}{\partial x}[2x^2]\big)\frac{\Psi(x)\Gamma(x+1)}{\Gamma'(x+1)}\Psi(\frac{x}{y}+1)$$
+$\big(\frac{\partial}{\partial x}[2x^2]\big)\frac{\Psi(x)\Gamma(x+1)}{\Gamma'(x+1)}\Psi(\frac{x}{y}+1)$
 
 ```python
 from python import (derivative, gamma, psi)
