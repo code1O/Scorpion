@@ -10,9 +10,9 @@ class matrix:
     self.positional = positional -1
     
   def create(rows: int, columns: int) -> tuple:
-    _values = [0]*rows
-    for i in range(columns):
-      _values[i] = [0]*columns
+    _values = [0]*columns
+    for i in range(0,columns):
+      _values[i] = [0]*rows
     return _values
   
   def create_multiple(rows: Natural, columns: Natural, variables: str) -> tuple:
