@@ -191,11 +191,26 @@ def derivative(beggin=1,*,x, power):
   
   # derivative of 5x^2
   dx = derivative(5,x=1,power=2)
-  print(dx) # 10
+  print(dx) # 5(2x)
   ```
   """
   
   calculus = beggin*((power*x)**(power-1))
+  return calculus
+
+def s_derivative(beggin=1,*,x,power):
+  """
+  second derivative
+  ```python
+  from scorpion.python import s_derivative
+  
+  # second derivative of 5x^4
+  d2x = s_derivative(5,x=1,power=4)
+  print(d2x) # 25(3x^2)
+  ```
+  """
+  reduct = (power-1)*x
+  calculus = beggin*(power*(reduct**(power-2)))
   return calculus
 
 class integral:
