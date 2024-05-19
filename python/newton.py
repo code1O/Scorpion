@@ -206,7 +206,7 @@ def s_derivative(beggin=1,*,x,power):
   
   # second derivative of 5x^4
   d2x = s_derivative(5,x=1,power=4)
-  print(d2x) # 25(3x^2)
+  print(d2x) # 5(4(3x^2))
   ```
   """
   reduct = (power-1)*x
