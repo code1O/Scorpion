@@ -77,22 +77,25 @@ class matrix:
     [4,5,5,7,8],[3,6,6,8,9],[2,5,6,8,9]
     ] to (4,3,2),(5,6,5)
     """
-    n,result = 0, None
+    n = 0
     len_matrix = len(self.matrix[self.positional])
-    for _ in range(1, len_matrix):
+    for _ in range(len_matrix):
       n+=1
       arg = self.matrix[n-1][:2]
       self.newvalues.append(arg)
-    x_pair = [x for x,_ in self.newvalues]
-    y_pair = [y for _,y in self.newvalues]
-    if variable=="x":
-      return x_pair
-    elif not variable=="x" and (
-    not variable=="y" or not variable == "xy"):
-      return f"variable \"{variable}\" not allowed", None
-    elif variable == "xy":
-        return x_pair, y_pair
-    return y_pair
+
+    results_variables: dict={
+    "x": [x for x,_ in self.newvalues],
+    "y": [y for _,y in self.newvalues,
+    "z": [z for_,_,z in self.newvalues],
+    "xy": [(x,y) for x,y in self.newvalues],
+    "xyz": [(x,y,z) for x,y,z in self.newvalues],
+    "yz": [(y,z) for _,y,z in self.newvalues],
+    "xz": [(x,z) for x,_,z in self.newvaluws]
+    }
+    keys = results_variables.keys()
+    notfoundvar = f"variable \"{variable}\" not found in {keys}"
+    return result_variables.get(variable, notfoundvar)
 
 class locate_matrix:
   import json
