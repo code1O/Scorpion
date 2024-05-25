@@ -95,7 +95,7 @@ class matrix:
     }
     keys = results_variables.keys()
     notfoundvar = f"variable \"{variable}\" not found in {keys}"
-    return result_variables.get(variable, notfoundvar)
+    return results_variables.get(variable, notfoundvar)
 
 class locate_matrix:
   import json
