@@ -24,8 +24,8 @@ def gamma(x: _TypeNum, y: _TypeNum=0, recursive: bool=False):
     return not_recursive(x,y) if recursive == False else recursive_(x,y)
 
 def psi(n: _TypeNum, m: _TypeNum=1,*, x: _TypeNum, y:_TypeNum)->_TypeNum:
-    calculus_0 = (sqrt(2)*sen(n*pi*x))*sqrt(2)*sen(m*pi*y)
-    calculus_1 = sen(n*pi*x)*sqrt(2)
+    calculus_0 = (sqrt(2)*sin(n*pi*x).deg)*sqrt(2)*sin(m*pi*y).deg
+    calculus_1 = sen(n*pi*x).deg*sqrt(2)
     if y > 1 and m > 1:
         return calculus_0
     return calculus_1
