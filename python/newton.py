@@ -23,19 +23,12 @@ def gamma(x: _TypeNum, y: _TypeNum=0, recursive: bool=False):
     not_recursive = lambda x,y: n/y*int(sqrt(pi)) if not y == 0 else fact(x-1)
     return not_recursive(x,y) if recursive == False else recursive_(x,y)
 
-def psi(x: _TypeNum, y:_TypeNum=0, recursion: bool=False)->_TypeNum:
-    h, value_gamma = (1/10**2), 0.57721
-    dgamma_dx = ((gamma(x, y,recursion)+h)-gamma(x,y,recursion))/h
-    calc_gamma = dgamma_dx/gamma(x,y,recursion)
-    calculus = (-value_gamma-2*logn(calc_gamma))+2
-    if isnan(calculus):
-        non_recursive = sqrt(2/1)*sin((pi*(x/y))/1).deg if not y == 0 else (
-        sqrt(2/1)*sin((pi*x)/1).deg)
-        recursive = (x/y)*(sqrt(2/1)*sin((pi*(x/y))/1).deg) if not y == 0 else (
-        (x)*(sqrt(2/1)*sin((pi*x)/1).deg)
-        )
-        return non_recursive if recursion == False else recursive
-    return calculus
+def psi(n: _TypeNum, m: _TypeNum=1,*, x: _TypeNum, y:_TypeNum)->_TypeNum:
+    calculus_0 = (sqrt(2)*sen(n*pi*x))*sqrt(2)*sen(m*pi*y)
+    calculus_1 = sen(n*pi*x)*sqrt(2)
+    if y > 1 and m > 1:
+        return calculus_0
+    return calculus_1
 
 
 class factor:
