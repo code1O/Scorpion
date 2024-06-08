@@ -48,7 +48,7 @@ def inverse_qubit(t_data=optional):
     is_num = isinstance(t_data, _TypeNum)
     return inverse_num(t_data) if is_num else inverse_vector(t_data)
 
-class 2d:
+class bidimension:
     
     def psi(n: _TypeNum=1,m: _TypeNum=2,*,x: _TypeNum, y: _TypeNum):
         equation_1 = sqrt(2)*sin(n*pi*x).deg
