@@ -25,6 +25,7 @@ def psi_qubit(dtype=bool,*,alpha, beta):
     ```tex
     \left|\psi\rangle = \lfloor\alpha\rfloor+\lfloor\beta\rfloor
     ```
+    """
     calculus = int(alpha) + int(beta)
     result = dtype(calculus)
     return result
