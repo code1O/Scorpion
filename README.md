@@ -35,7 +35,7 @@ Scorpion is an scientifical and data handler multi-programming language project 
 | --------- | ------------- | ---------------- |
 | newton.py |    1/2        |       ✔         |
 | apple.py  |    ✔         |       ✔         |
-| incoming  |    ✔         |       ❌        |
+| Quantica.py  |    ✔         |       ❌        |
 
 ## Rust
 | Module | Quantum maths | Classic maths |
@@ -46,13 +46,12 @@ Scorpion is an scientifical and data handler multi-programming language project 
 | incoming  |    ✔         |       ❌        |
 
 
-** Classic maths means **:
-
+*Classic maths means*
 - Classic physics
 - Classic mechanics
 - Calculus
 
-** Quantum maths means **:
+*Quantum maths means*
 - Quantum physics
 - Quantum mechanics
 
