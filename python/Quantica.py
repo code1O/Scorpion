@@ -18,6 +18,28 @@ derivative, s_derivative, sin, cos
 )
 from typing import TypeAlias
 
+h = 6.62607015e-34
+hbar = h/(2*pi)
+gamma = 0.57721
+phi = (1+sqrt(5))/2
+
+
+def nabla_sqr(beggin=[1,1,1],*,var: _Typedata, power: _Typedata):
+    
+    derivatives = None
+    for k in beggin:
+        for v in var:
+            (result:= [s_derivative(k,v,n) for n in power])
+    return sum(derivatives)
+
+def nabla(beggin=[1,1,1],*,var: _Typedata, power: _Typedata):
+    
+    derivatives = None
+    for k in beggin:
+        for v in var:
+            (result:= [derivative(k,v,n) for n in power])
+    return sum(derivatives)
+
 optional: TypeAlias = _TypeData | _TypeNum
 
 def psi_qubit(dtype=bool,*,alpha, beta):
