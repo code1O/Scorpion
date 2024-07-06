@@ -3,6 +3,12 @@ _TypeNum, _Typedata, PositiveInt as Natural,
 _TdataNum
 )
 
+def conjugate(items):
+  result = []
+  for item in items:
+    result.append(item.conjugate())
+  return result
+
 class matrix:
   newvalues = []
   def __init__(self, _matrix: _Typedata, positional: Natural=0) -> None:
@@ -48,7 +54,7 @@ class matrix:
             return self.position
     ```
     rtype: determinize the data to consider return
-   (column values, rows from a position)
+    (column values, rows from a position)
     """
     ArrayColumn = [x for x in self._matrix[self.positional]]
     match rtype:
@@ -84,10 +90,10 @@ class matrix:
       arg = self.matrix[n-1][:2]
       self.newvalues.append(arg)
 
-    results_variables: dict={
+    results_variables: dict = {
     "x": [x for x,_ in self.newvalues],
-    "y": [y for _,y in self.newvalues,
-    "z": [z for_,_,z in self.newvalues],
+    "y": [y for _,y in self.newvalues],
+    "z": [z for _,_,z in self.newvalues],
     "xy": [(x,y) for x,y in self.newvalues],
     "xyz": [(x,y,z) for x,y,z in self.newvalues],
     "yz": [(y,z) for _,y,z in self.newvalues],

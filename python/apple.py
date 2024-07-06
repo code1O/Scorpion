@@ -10,7 +10,7 @@
     * radians
     * natural logarithm `logn`
 
-Components
+ Components
     
     * Delta
     * Standart Delta `DeltaX`
@@ -24,7 +24,7 @@ Union,
 Dict,
 Tuple,
 List,
-Set
+Set,
 overload
 )
 from typing_extensions import (
@@ -32,6 +32,16 @@ SupportsIndex,
 Literal,
 TypeAlias
 )
+
+# Imported from external library
+# as a type of data to return 
+from numpy import (
+    # Series of ints
+    int8, int16, int32, int64,
+    # Series of floats
+    float16, float32, float64
+)
+
 from functools import lru_cache
 import sys
 
@@ -86,11 +96,12 @@ def radians(value: float) -> float:...
 def radians(value) -> float: return __radians(value)
 
 def __sqrt(value) -> float:
-  res = 0
-  if value < 0:
-      res = (abs(value)+0j)**(1/2)
-      return res
-  return value**(1/2)
+    res = 0
+    if value < 0:
+        res = abs(value)**(1/2)
+    else:
+        res = value**(1/2)
+    return res
 @overload
 def sqrt(value: LiteralInteger) -> float:...
 @overload

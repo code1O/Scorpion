@@ -1,6 +1,6 @@
 from .apple import(
 _TypeNum,
-_TypeData,
+_Typedata,
 LiteralInteger as N,
 sqrt,
 pi,
@@ -10,26 +10,18 @@ logn,
 exp
 )
 
-from math import log, isnan
+# Type of data to return
+from .apple import (
+  # Ints
+  int16, int32,
+  # Floats
+  float16, float32
+)
 
 def quadratic_gen(a, b, c):
   result_1 = -b+(sqrt(pow(b, 2)-4*a*c))/2*a
   result_2 = -b-(sqrt(pow(b, 2)-4*a*c))/2*a
   return [result_1, result_2]
-
-def gamma(x: _TypeNum, y: _TypeNum=0, recursive: bool=False):
-    n = x-2 if x >= 3 else 1
-    recursive_ = lambda x,y: (x/y)*n/y if not y == 0 else x*fact(x-1)
-    not_recursive = lambda x,y: n/y*int(sqrt(pi)) if not y == 0 else fact(x-1)
-    return not_recursive(x,y) if recursive == False else recursive_(x,y)
-
-def psi(n: _TypeNum, m: _TypeNum=1,*, x: _TypeNum, y:_TypeNum)->_TypeNum:
-    calculus_0 = (sqrt(2)*sin(n*pi*x).deg)*sqrt(2)*sin(m*pi*y).deg
-    calculus_1 = sen(n*pi*x).deg*sqrt(2)
-    if y > 1 and m > 1:
-        return calculus_0
-    return calculus_1
-
 
 class factor:
   def __init__(self, values: tuple[_TypeNum]) -> None:
@@ -160,23 +152,6 @@ class tangent:
     return sin(self.value).deg/cos(self.value).radians
 
 
-class functions:
-  """
-  functions or also called:
-  
-  f(x), g(x), h(x), etc...
-  """
-  def __init__(self, func, x_value) -> None:
-    self.func = func
-    self.function_x, self.x_value = func(x_value), x_value
-  
-  def set_function(self):
-    return self.func
-  
-  def fdeltax(self, deltax: _TypeNum=0.001):
-    result = ((self.func(self.x_value+deltax)-(self.function_x))/deltax)
-    return result
-
 def derivative(beggin=1,*,x, power):
   """
   ```python
@@ -206,18 +181,22 @@ def s_derivative(beggin=1,*,x,power):
   calculus = beggin*(power*(reduct**(power-2)))
   return calculus
 
-class integral:
+class integral_defined:
   
-  def __init__(self)->None:...
+  def __init__(self, dtype=int32, *, b: _TypeNum, a: _TypeNum, cvalues: _Typedata=[]):
+    self.b, self.a = b, a
+    self.cvalues1, self.cvalues2 = cvalues[0], cvalues[1]
+    self.dtype = dtype
   
-  def defined(self, a: N=0,*,b: N, x_pow: N):
-    dx = ((b**n_pow)/x_pow+1)-((a**x_pow+1)/n_pow+1)
-    return dx
+  def fact(self):
+    factor_instance = findfactor(self.cvalues2[0], self.cvalues2[1]).DoubleBoth("top")
+    x_0, x_1 = factor_instance[0], factor_instance[1]
+    Fx = (x_1*self.b, x_0*self.a)
+    calculus_b = (self.cvalues1/Fx[0])*logn(Fx[0])
+    calculus_a = (self.cvalues1/Fx[1])*logn(Fx[1])
+    calculus = calculus_b-calculus_a
+    return self.dtype(calculus.real)
   
-  def undefined(x_n: N=1,*,x_pow: N):
-    return (x_n**(x_pow+1))/(x_pow+1)
-  
-
 class vectors:
   import matplotlib.pyplot as plt
   import numpy as np
