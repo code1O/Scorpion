@@ -47,6 +47,11 @@ pub mod mathops{
         tuple_variables: Vec<i32>,
     }
 
+    pub struct TypeNums {
+        I32: i32,
+        F64: f64
+    }
+
     impl Factor {
         pub fn new(vector: Vec<i32>) -> Self {
             let (x1, y1, x2, y2) = (vector[0], vector[1], vector[2], vector[3]);

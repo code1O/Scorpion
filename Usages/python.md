@@ -56,8 +56,6 @@ print(instance_array, position value, [union, intersect])
 
 # Calculating equations
 
-![equation](https://latex.codecogs.com/png.image?\huge&space;\dpi{300}\bg{white}\left(\frac{\partial&space;f}{\partial&space;x}(2x^2)\right)\frac{\psi(x)\Gamma(x&plus;1)}{\Gamma'(x&plus;1)}\psi\left(\frac{x}{y}&plus;1\right))
-
 ```python
 from scorpion.python import (derivative, gamma, psi)
 n,m = 5, 2
