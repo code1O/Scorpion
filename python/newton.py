@@ -182,6 +182,8 @@ def s_derivative(beggin=1,*,x,power):
   return calculus
 
 class integral_defined:
+  from scipy.optimize import fsolve
+  import numpy as np
   
   def __init__(self, dtype=int32, *, b: _TypeNum, a: _TypeNum, cvalues: _Typedata=[]):
     self.b, self.a = b, a
@@ -191,11 +193,10 @@ class integral_defined:
   def fact(self):
     factor_instance = findfactor(self.cvalues2[0], self.cvalues2[1]).DoubleBoth("top")
     x_0, x_1 = factor_instance[0], factor_instance[1]
-    Fx = (x_1*self.b, x_0*self.a)
-    calculus_b = (self.cvalues1/Fx[0])*logn(Fx[0])
-    calculus_a = (self.cvalues1/Fx[1])*logn(Fx[1])
-    calculus = calculus_b-calculus_a
-    return self.dtype(calculus.real)
+    A, B = self.np.linspace(0, 10, 10), self.np.linspace(0, 10, 10)
+    term = self.fsolve(func=A+B, x0=1)
+    Fx_0 = term * logn(x_1 * self.b) + term * logn(x_0 * self.a)
+    Fx_1 = term * logn(x_1 * self.b) - term * logn(x_0)
   
 class vectors:
   import matplotlib.pyplot as plt

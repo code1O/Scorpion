@@ -84,6 +84,15 @@ class vectors{
     }
 }
 
+class IntegralDefined {
+    constructor (b, a, c_values){
+        this.b = b
+        this.a = a
+        this.cvalues = c_values;
+    }
+    fact () {}
+}
+
 exports.sin = sin
 exports.cosin = cosin
 exports.tangent = tangent

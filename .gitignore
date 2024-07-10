@@ -5,8 +5,10 @@
 *.py~
 
 # paths that's for code testing
+*tests*
 output
 target
 cargo.lock
 cargo.toml
-*tests*
+scorpion_bin
+scorpion_lib

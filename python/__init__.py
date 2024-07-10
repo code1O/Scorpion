@@ -20,37 +20,24 @@ Quantic science ------ Quantica
 """
 
 from .apple import (
-sqrt,
-exp,
-pi,
-e,
-Delta,
-DeltaX,
-degrees,
-radians,
-fact,
-logn,
-floor,
+sqrt, exp,
+pi, e,
+Delta, DeltaX,
+degrees, radians,
+fact, logn, floor,
 absolute
 )
 from .newton import (
-sin,
-cos,
-tangent,
+sin, cos, tangent,
 quadratic_gen,
-derivative,
-s_derivative,
-factor,
-findfactor,
-vectors,
-integral_defined,
+derivative, s_derivative,
+factor, findfactor,
+vectors, integral_defined,
 preciss
 )
 from ._defdatas import (
-matrix,
-locate_matrix,
-matharray,
-Array,
+matrix, locate_matrix,
+matharray, Array,
 conjugate
 )
 

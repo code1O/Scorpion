@@ -34,7 +34,7 @@ fn main() {
         _matrix_x
     }
 
-    print!("{:?"}", Modify_matrix());
+    print!("{:?}", Modify_matrix());
 }
 ````
 

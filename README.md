@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Contributors](https://img.shields.io/github/contributors/code1O/scorpion.svg)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/code1O/scorpion/total?logo=Github)
+![GitHub last commit](https://img.shields.io/github/last-commit/code1O/scorpion)
+
 
 Completely scientifical project
 
@@ -16,48 +18,28 @@ Scorpion is an scientifical and data handler multi-programming language project 
 - Scientical functions (sqrt, degrees, radians, etc...)
 - Scientifcal operations (factorization, finding factorization, sin, cos, tan, etc...)
 
-
-# Functions availables
-
-| Language | Data handling |  Mathematical functions | Mathematical operations  |
-| -------- | ------------- |  ---------------------  | ------------------------ |
-| Python   |      ✔        |         ✔              |           ✔              |
-|   JS     |      ✔        |         ✔              |           ✔              |
-|   C#     |      ✔       |         ✔              |           ✔              |
-|   C      |      ✔       |         ✔              |           ✔              |
-|   C++    |       ✔       |         ✔              |           ✔              |
-|  Rust    |       ✔       |         ✔              |           ✔              |
-
-# Applications of this proyect
+<details>
+<summary> <h1> Aplications of this project </h1> </summary>
 
 ## Python
-| Module | Quantum maths | Classic maths |
-| --------- | ------------- | ---------------- |
-| newton.py |    1/2        |       ✔         |
-| apple.py  |    ✔         |       ✔         |
-| Quantica.py  |    ✔         |       ❌        |
+| Module    |  Quantum maths |     Classic maths   |
+| --------- | -------------  |   ----------------  |
+| newton.py |      1/2       |       ✔             |
+| apple.py  |       ✔        |       ✔             |
+| Quantica.py  |    ✔        |       ❌            |
 
 ## Rust
-| Module | Quantum maths | Classic maths |
-| --------- | ------------- | ---------------- |
-| newton.rs |    ❌        |       ✔         |
-| index.rs  |    ❌         |       ✔         |
-| HandleDatas.rs| ❌        |       ✔         |
-| incoming  |    ✔         |       ❌        |
+| Module    | Quantum physics  | Classic physics |
+| --------- |  -------------   | ----------------|
+| newton.rs |       ❌        |       ✔         |
+| index.rs  |       ❌        |       ✔         |
+| HandleDatas.rs|   ❌        |       ✔         |
+| einstein.rs  |    ✔         |       ✔         |
 
-
-*Classic maths means*
-- Classic physics
-- Classic mechanics
-- Calculus
-
-*Quantum maths means*
-- Quantum physics
-- Quantum mechanics
-
+</details>
 
 > [!NOTE]
-> This repository is still in building and research, i keep researching to bring you the best functions and everything that could easier your life, so please be patient to the releases for enjoy completely this project
+> This repository is still in building and reseach, i keep researching to bring you the best functions and everything that could easier your life, so please be patient to the releases for enjoy completely this project
 
 ---
 

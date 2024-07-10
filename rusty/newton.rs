@@ -27,29 +27,50 @@ Essential mathematical operations for calculus in projects or scripts
    Return the factorization for any numbers, e.g. `(3)(-3)/(4)(-3)`
    will return `3` & `4`.
 
+- **`Integral`**
+  
+  Return the integration of a function.
+
+  Types of integration: Integration by factorization
+
 ## Some important guide
 
-### Factorization
+### Factorizing
 
   The factorization implies `Factor` & `FindFactor`.
 
-  There's many options for return the result of the factorization,
-  If the factorization is binomial use `double_both`,
-  else if the factorization is monomial instead in the top use `double_top`,
-  else if the factorization is binomial instead in the bottom use `double_bottom`.
+  The factorization could be automatic or manual
+
+  - Automatic
+
+    ```rust
+    #[path="rusty/mod.rs"]
+    mod rusty;
+    use rusty::newton::mathops;
+    fn main() {
+        let (x, y, my_type) = (7, -12, "division");
+        let mut factor_instance = mathops::FindFactor(x, y);
+        
+        // Binomial, return for top calculation
+        let for_top_bin = factor_instance.double_top();
+        
+        // Binomial, return for bottom calculation
+        let for_bott_bin = factor_instance.double_bottom();
+        
+        // Binomial, return for both calculation
+        let for_both_bin = factor_instance.double_both(my_type);
+    }
+    ```
 */
 pub mod mathops{
 
+    use std::result;
+
     use super::datas::datas::{self, Array};
-    use super::index::mathfuns::{self, fact, sqrt};
+    use super::index::mathfuns::{self, fact, sqrt, logn};
     
     pub struct Factor {
         tuple_variables: Vec<i32>,
-    }
-
-    pub struct TypeNums {
-        I32: i32,
-        F64: f64
     }
 
     impl Factor {
@@ -264,34 +285,52 @@ pub mod mathops{
             result
         }
     }
+    pub struct IntegralDefined {
+        b_value: f64, 
+        a_value: f64, 
+        cvalues: Vec<f64>
+    }
+    impl IntegralDefined {
+        pub fn new(b: f64, a: f64, cvalues: Vec<f64>) -> Self {
+            Self {
+                b_value: b,
+                a_value: a,
+                cvalues: cvalues
+            }
+        }
+        ///
+        /// **Integrate function by factorizing**
+        /// ```rust
+        /// #[path="rusty/mod.rs"]
+        /// mod rusty;
+        /// use rusty::newton::mathops;
+        /// fn main() {
+        ///   let (b, a, c_values) = (4, 0, vec![1, 2*1^2-2]);
+        ///   let int_instance = mathops::IntegralDefined::new(b, a, c_values);
+        ///   print!("{:?}", int_instance.fact());
+        /// }
+        /// ```
+        /// 
+        pub fn fact(&mut self) -> f64 {
+            fn convert(result: Result<f64, Vec<f64>>) -> Vec<f64> {
+                match result {
+                    Ok(value) => vec![value],
+                    Err(vec) => vec
+                }
+            }
+            let (b, a) = (self.b_value, self.a_value);
+            let (cval_a, cval_b) = (self.cvalues[0] as i32, self.cvalues[1] as i32);
+            let factor_instance = FindFactor::new(cval_a, cval_b)
+                                                        .double_both("top");
 
-    pub struct CalculateVec {
-        fx: Result<i32, f64>,
-        fy: Result<i32, f64>
-    }
-    impl CalculateVec {
-        pub fn new(fx: Result<i32, f64>, fy: Result<i32, f64>) -> Self {
-            CalculateVec {
-                fx: fx,
-                fy: fy
-            }
-        }
-        
-    }
-    pub struct IntegralUndefined {
-        operation: Result<f64, i32>
-    }
-    impl IntegralUndefined {
-        pub fn new(operation: Result<f64, i32>) -> Self {
-            IntegralUndefined{
-                operation: operation
-            }
-        }
-        pub fn sum_pownums(&mut self, nums: &str) {
-            let mut list = [0];
-            let mut stringer = String::from(nums);
-            stringer = stringer.replace(" ", "");
-            let parts: Vec<&str> = stringer.split(";").collect();
+            let res  = convert(factor_instance);
+            let (x_0, x_1) = (res[0], res[1]);
+
+            let fx = vec![x_1 * b, x_0 * a];
+            let calculus_b = (cval_a as f64 / fx[0]) * logn(fx[0]);
+            let calculus_a = (cval_b as f64 / fx[1]) * logn(fx[1]);
+
+            calculus_b - calculus_b
         }
     }
 }

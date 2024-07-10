@@ -20,17 +20,11 @@
 
 from typing import (
 SupportsFloat,
-Union,
-Dict,
-Tuple,
-List,
-Set,
+Union, Dict, Tuple, List, Set,
 overload
 )
 from typing_extensions import (
-SupportsIndex,
-Literal,
-TypeAlias
+SupportsIndex, Literal, TypeAlias
 )
 
 # Imported from external library
@@ -79,35 +73,35 @@ LiteralInteger: TypeAlias = PositiveInt | NegativeInt | Literal[0]
 
 _TdataNum: TypeAlias = _Typedata | _TypeNum
 
-def __degrees(value) -> float: return (value*pi)/180
+def __degrees(value, dtype=float32) -> float: return dtype((value * pi) / 180)
 @overload
-def degrees(value: float) -> float:...
+def degrees(value: float, dype=float32) -> float:...
 @overload
 def degrees(value: LiteralInteger) -> float:...
 @lru_cache()
-def degrees(value) -> float: return __degrees(value)
+def degrees(value, dtype) -> float: return __degrees(value, dtype)
 
-def __radians(value) -> float: return (value/180)*pi
+def __radians(value, dtype=float32) -> float: return dtype((value / 180) * pi)
 @overload
-def radians(value: LiteralInteger) -> float:...
+def radians(value: LiteralInteger, dtype=float32) -> float:...
 @overload
-def radians(value: float) -> float:...
+def radians(value: float, dtype=float) -> float:...
 @lru_cache()
-def radians(value) -> float: return __radians(value)
+def radians(value, dtype) -> float: return __radians(value, dtype)
 
-def __sqrt(value) -> float:
+def __sqrt(value, dtype=float32) -> float:
     res = 0
     if value < 0:
-        res = abs(value)**(1/2)
+        res = abs(value)**(1 / 2)
     else:
-        res = value**(1/2)
-    return res
+        res = value**(1 / 2)
+    return dtype(res)
 @overload
-def sqrt(value: LiteralInteger) -> float:...
+def sqrt(value: LiteralInteger, dtype=int32) -> float:...
 @overload
-def sqrt(value: float) -> float:...
+def sqrt(value: float, dtype=int32) -> float:...
 @lru_cache()
-def sqrt(value) -> float: return __sqrt(value)
+def sqrt(value, dtype) -> float: return __sqrt(value, dtype)
 
 def __exp(value) -> float: return pow(e, value)
 def exp(value: _TypeNum) -> float: return __exp(value)
@@ -133,7 +127,6 @@ def logn(value) -> float: return __logn(value)
 
 @lru_cache()
 def floor(x: _TypeNum) -> int:
-    if type(x) == int: return x
     return int(x)
 
 @lru_cache()
